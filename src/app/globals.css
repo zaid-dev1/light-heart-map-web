@@ -1,0 +1,91 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: "Noto Serif", serif !important;
+}
+
+.ant-checkbox-inner {
+  border-color: #746253 !important;
+}
+
+.ant-checkbox-checked .ant-checkbox-inner {
+  background-color: #746253 !important;
+  border-color: #746253 !important;
+}
+
+.ant-checkbox-checked .ant-checkbox-inner::after {
+  border-color: white !important;
+}
+
+.ant-select .ant-select-selector {
+  background-color: #ede6de3d !important;
+}
+.ant-select-selection-item {
+  margin-top: 8px !important;
+}
+
+.ant-drawer-header {
+  display: none !important;
+}
+.ant-drawer-body {
+  padding: 0 !important;
+}
+
+.ant-modal-header {
+  margin: 0px !important;
+}
+
+.ant-modal-content {
+  border-radius: 18px !important;
+  padding: 0 !important;
+}
+.ant-modal-title > span {
+  padding: 10px !important;
+  padding-top: 15px !important;
+}
+
+.ant-pagination-item-active {
+  border-color: #746253 !important;
+}
+.ant-pagination-item-active > a {
+  color: #746253 !important;
+}
+
+.gm-style-iw-chr {
+  display: none;
+}
+
+.customCancelButton:hover {
+  border: 1px solid #dbcab8 !important;
+  color: #f1e5d8 !important;
+}
+
+.customOKButton:hover {
+  color: white;
+  border: 1px solid #dbcab8 !important;
+  background-color: #f1e5d8 !important;
+}
+.ant-btn-primary {
+  background-color: #dbcab8 !important;
+  color: white !important;
+}
+
+#__next-build-warnings-overlay__, #__next-build-error-overlay__ {
+  display: none !important;
+}
