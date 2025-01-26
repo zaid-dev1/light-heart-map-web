@@ -39,7 +39,7 @@ export default function Home() {
         },
       );
     } else {
-      console.log("Geolocation is not supported by this browser.");
+      console.error("Geolocation is not supported by this browser.");
     }
   };
 
