@@ -60,7 +60,7 @@ function Profile() {
           />
           <InfoUnit
             heading="Courses"
-            value={user?.businessDetails?.courses || "-"}
+            value={user?.customer?.courses || "-"}
           />
         </div>
         <div className="mt-12">

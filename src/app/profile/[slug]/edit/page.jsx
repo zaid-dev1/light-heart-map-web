@@ -50,7 +50,7 @@ function Profile() {
           businessName: res?.businessDetails?.name,
           businessPhone: res?.businessDetails?.businessPhone,
           services: res?.businessDetails?.services?.split(","),
-          courses: res?.businessDetails?.courses?.split(","),
+          courses: res?.customer?.courses?.split(","),
           instagramAccount: res?.businessDetails?.instagramAccount,
           websiteLink: res?.businessDetails?.websiteLink,
         };
@@ -135,7 +135,7 @@ function Profile() {
       latitude: +businessLatLon[0] || 0,
       longitude: +businessLatLon[1] || 0,
       services: values?.services?.join(",") || "",
-      courses: values?.courses?.join(",") || "",
+      // courses: values?.courses?.join(",") || "",
     };
 
     try {
@@ -359,6 +359,7 @@ function Profile() {
               className="you-are-select md:col-span-1 col-span-2 mr-3"
             >
               <Select
+              disabled
                 size="large"
                 mode="multiple"
                 placeholder="Select Courses"

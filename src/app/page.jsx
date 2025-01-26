@@ -10,6 +10,7 @@ import { getNearByUsers } from "./api/user";
 
 export default function Home() {
   const [isPageLoaded, setIsPageLoaded] = useState(false);
+  const [isLoading, setIsIsLoading] = useState(false);
   const [userLocation, setUserLocation] = useState(null);
   const [userList, setUserList] = useState([]);
   const [sortValue, setSortValue] = useState(100);
@@ -51,6 +52,7 @@ export default function Home() {
     page = 1,
     limit = 100,
   ) => {
+    setIsIsLoading(true)
     const payload = {
       lat,
       lng,
@@ -61,6 +63,7 @@ export default function Home() {
     };
     const response = await getNearByUsers(payload);
     setUserList(response);
+    setIsIsLoading(false)
   };
 
   useEffect(() => {
@@ -93,6 +96,7 @@ export default function Home() {
               setRolesArray={setRolesArray}
               rolesArray={rolesArray}
               handleLocationChange={setUserLocation}
+              isLoading={isLoading}
             />
           </>
         )}

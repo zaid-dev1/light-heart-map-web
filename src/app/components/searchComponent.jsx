@@ -26,6 +26,7 @@ export function SearchSiderbar({
   sortValue,
   rolesArray,
   setRolesArray,
+  isLoading
 }) {
   const [isOpen, setIsOpen] = useState(true);
   const [options, setOptions] = useState([]);
@@ -270,6 +271,9 @@ export function SearchSiderbar({
         </div>
 
         <div className="my-8">
+        {isLoading && <div className="px-2">
+          Loading...
+        </div>}
           {response?.customers && response?.customers.length > 0 ? (
             response?.customers?.map((user) => {
               if (user.customer?.role !== "admin") {
@@ -359,13 +363,14 @@ export function SearchSiderbar({
                     </div>
                   </div>
                 );
-              } else {
+              } 
+              {/* else {
                 return (
                   <p className="text-[#746253] p-4 bg-[#F0F0F0] text-xs mt-[5rem]">
                     There are no results found based on your current search
                   </p>
                 );
-              }
+              } */}
             })
           ) : (
             <p className="text-[#746253] p-4 bg-[#F0F0F0] text-xs mt-[5rem]">
