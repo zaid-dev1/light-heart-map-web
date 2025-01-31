@@ -180,7 +180,7 @@ const CustomerTable = () => {
       render: (text) => (text ? "Yes" : "No"),
     },
     {
-      title: "Instagram Account",
+      title: "Instagram",
       dataIndex: "instagramAccount",
       key: "instagramAccount",
     },

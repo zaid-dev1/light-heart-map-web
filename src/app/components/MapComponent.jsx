@@ -136,28 +136,29 @@ const MapComponent = ({ location, users, sortValue }) => {
                           </div>
                           <p className="text-[#787474] text-xs my-5">
                             {user.description ||
-                              "This person uses Light Heart Products."}
+                              "This Artist Uses Light Heart Products."}
                           </p>
+                          {user?.customer?.courses && 
                           <p className="ml-2 mb-1">
-                            Role {"  "}-{"  "}
+                          Courses Completed {"  "}-{"  "}
                             <span className="text-primary">
-                              {user?.customer?.role?.toUpperCase()}
+                              {user?.customer?.courses}
                             </span>
-                          </p>
+                          </p>}
                           <p className="ml-2 mb-1">
-                            Business Name {"  "}-{"  "}
+                            Business {"  "}-{"  "}
                             <span className="text-primary">
                               {user?.businessProfile?.name}
                             </span>
                           </p>
                           <p className="ml-2 mb-1">
-                            Business Phone # {"  "}-{"  "}
+                            Phone {"  "}-{"  "}
                             <span className="text-primary">
                               {user?.businessProfile?.businessPhone}
                             </span>
                           </p>
                           <p className="ml-2 mb-1">
-                            Website Link {"  "}-{"  "}
+                            Website {"  "}-{"  "}
                             <span className="text-primary cursor-pointer hover:underline">
                               {user?.businessProfile?.websiteLink ? (
                                 <a
@@ -172,7 +173,7 @@ const MapComponent = ({ location, users, sortValue }) => {
                             </span>
                           </p>
                           <p className="ml-2 mb-1">
-                            Instagram Account {"  "}-{"  "}
+                            Instagram {"  "}-{"  "}
                             <span className="text-primary">
                               {user?.businessProfile?.instagramAccount ||
                                 "No Account"}
@@ -241,7 +242,7 @@ const MapComponent = ({ location, users, sortValue }) => {
                         </span>
                       </p>
                       <p className="ml-2 mb-2">
-                        Website Link {"  "}-{"  "}
+                        Website {"  "}-{"  "}
                         <span className="text-primary cursor-pointer hover:underline">
                           {hq?.websiteLink ? (
                             <a href={hq?.websiteLink} target="_blank">
@@ -253,7 +254,7 @@ const MapComponent = ({ location, users, sortValue }) => {
                         </span>
                       </p>
                       <p className="ml-2 mb-2">
-                        Instagram Account {"  "}-{"  "}
+                        Instagram {"  "}-{"  "}
                         <span className="text-primary">
                           {hq?.instagramAccount || "No Account"}
                         </span>

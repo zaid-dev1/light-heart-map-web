@@ -123,10 +123,10 @@ const AddEditHqModal = ({ visible, mode, data, onClose, onSave }) => {
               />
             </AutoComplete>
           </Form.Item>
-          <Form.Item label="Website Link" name="websiteLink">
+          <Form.Item label="Website" name="websiteLink">
             <Input className="w-full px-2 py-1 pt-3 text-gray-800 bg-[#EDE6DE3D] outline-none border border-[#E8E8E8] focus:border-indigo-600 shadow-sm rounded-lg" />
           </Form.Item>
-          <Form.Item label="Instagram Account" name="instagramAccount">
+          <Form.Item label="Instagram" name="instagramAccount">
             <Input className="w-full px-2 py-1 pt-3 text-gray-800 bg-[#EDE6DE3D] outline-none border border-[#E8E8E8] focus:border-indigo-600 shadow-sm rounded-lg" />
           </Form.Item>
           <Form.Item label="Business Phone" name="businessPhone">

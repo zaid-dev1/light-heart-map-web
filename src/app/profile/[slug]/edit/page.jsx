@@ -161,7 +161,7 @@ function Profile() {
         <Form form={form} onFinish={handleSubmitProfile}>
           <div>
             <div className="flex justify-between items-center">
-              <h3 className="text-xl text-[#746253]">Basic Information</h3>
+              <h3 className="text-xl text-[#746253]">Business Information</h3>
               <div className="flex">
                 <Link
                   href={`/profile/${slug}`}
@@ -179,17 +179,6 @@ function Profile() {
                 </Form.Item>
               </div>
             </div>
-            {/* <div className="flex justify-end">
-              <button
-                className="text-[#746253] text-xs bg-primary rounded-full px-5 py-2"
-                onClick={(e) => {
-                  setShowModal(true);
-                  e.preventDefault();
-                }}
-              >
-                Update Profile Picture
-              </button>
-            </div> */}
           </div>
           <div className="grid grid-cols-2 mt-6">
             <Form.Item
@@ -237,8 +226,11 @@ function Profile() {
               name="phone"
             >
               <CustomInput
-                labelText="Phone"
-                type="text"
+                labelText="Personal Phone"
+                style={{
+                  WebkitTextSecurity: 'disc',
+                  textSecurity: 'disc',
+                }}
                 placeholder=""
                 disabled={true}
                 icon={
@@ -246,7 +238,7 @@ function Profile() {
                     src="/assets/svgs/icons/phone-icon.svg"
                     width={20}
                     height={20}
-                    className="mr-2"
+                    className="mr-2 ml-2"
                     alt="phone"
                   />
                 }
@@ -336,31 +328,13 @@ function Profile() {
             </Form.Item>
 
             <Form.Item
-              name="services"
-              className="you-are-select md:col-span-1 col-span-2 mr-3"
-            >
-              <Select
-                size="large"
-                mode="multiple"
-                labe
-                placeholder="Select Services"
-                className="w-full text-gray-800 bg-[#EDE6DE3D] outline-none rounded-lg"
-                options={[
-                  { value: "service1", label: "Service 1" },
-                  { value: "service2", label: "Service 2" },
-                  { value: "service3", label: "Service 3" },
-                  { value: "service4", label: "Service 4" },
-                ]}
-              />
-            </Form.Item>
-
-            <Form.Item
               name="courses"
+              labelText="Courses"
               className="you-are-select md:col-span-1 col-span-2 mr-3"
             >
               <Select
-              disabled
-                size="large"
+                disabled
+                size="medium"
                 mode="multiple"
                 placeholder="Select Courses"
                 className="w-full text-gray-800 bg-[#EDE6DE3D] outline-none rounded-lg"
@@ -378,7 +352,7 @@ function Profile() {
               name="instagramAccount"
             >
               <CustomInput
-                labelText="Instagram Account"
+                labelText="Instagram"
                 type="text"
                 placeholder="www.insta.com"
               />
@@ -389,9 +363,9 @@ function Profile() {
               name="websiteLink"
             >
               <CustomInput
-                labelText="website Link"
+                labelText="website"
                 type="text"
-                placeholder="Website Link"
+                placeholder="www.website.com"
               />
             </Form.Item>
           </div>

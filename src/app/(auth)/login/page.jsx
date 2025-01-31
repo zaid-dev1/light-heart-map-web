@@ -31,6 +31,7 @@ function Login() {
         const currentUser = res.user;
         if (currentUser) {
           router.push("/");
+          sessionStorage.setItem('fromLogin', 'true')
           localStorage.setItem("currentUser", JSON.stringify(currentUser));
         } else {
           form.resetFields();

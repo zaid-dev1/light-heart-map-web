@@ -17,6 +17,7 @@ import {
   SORTOPTIONS,
 } from "../../../utils/constants";
 import { useRouter } from "next/navigation";
+import { userCardIcons, userTypeIcons } from "../../../utils/constants";
 
 export function SearchSiderbar({
   handleLocationChange,
@@ -28,7 +29,7 @@ export function SearchSiderbar({
   setRolesArray,
   isLoading
 }) {
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
   const [options, setOptions] = useState([]);
   const [address, setAddress] = useState("");
   const [open, setOpen] = useState(false);
@@ -142,6 +143,14 @@ export function SearchSiderbar({
     router.push(`/profile/${user.customer.customerId}`);
   };
 
+  const handleProfileRouting = (user, hq) => {
+    if (hq) {
+      router.push(`/profile/${user.id}`);
+    } else {
+      router.push(`/profile/${user.customer.customerId}`);
+    }
+  };
+
   const menu = (
     <div className="p-4 px-6 bg-white border border-[#E8E8E8] showdow-sm rounded-lg">
       <div onClick={handleMenuClick}>
@@ -181,8 +190,8 @@ export function SearchSiderbar({
         >
           <Image
             src="/assets/svgs/icons/close-icon.svg"
-            width={30}
-            height={30}
+            width={45}
+            height={45}
             alt="close"
           />
         </button>
@@ -195,8 +204,8 @@ export function SearchSiderbar({
         >
           <Image
             src="/assets/svgs/icons/open-icon.svg"
-            width={30}
-            height={30}
+            width={45}
+            height={45}
             alt="open"
           />
         </button>
@@ -229,6 +238,7 @@ export function SearchSiderbar({
                 alt="search"
               />
             }
+            placeholder="Search Light Heart Map"
           />
         </AutoComplete>
 
@@ -271,9 +281,9 @@ export function SearchSiderbar({
         </div>
 
         <div className="my-8">
-        {isLoading && <div className="px-2">
-          Loading...
-        </div>}
+          {isLoading && <div className="px-2">
+            Loading...
+          </div>}
           {response?.customers && response?.customers.length > 0 ? (
             response?.customers?.map((user) => {
               if (user.customer?.role !== "admin") {
@@ -283,22 +293,28 @@ export function SearchSiderbar({
                     key={user?.customer?.id}
                   >
                     <Image
-                      src={
-                        user?.customer?.img
-                          ? user?.customer?.img
-                          : "/assets/svgs/default-user.svg"
+                      src={userCardIcons[user?.customer?.role] ? userCardIcons[user?.customer?.role]
+                        : "/assets/svgs/default-user.svg"
                       }
                       width={100}
                       height={100}
                       alt="img"
                     />
                     <div className="ml-6">
-                      <h3 className="text-[#746253] text-xl">
-                        {user?.customer?.firstName} {user?.customer?.lastName}
-                      </h3>
+
+                      <button
+                        onClick={() => handleProfileRouting(user)}
+                        className="py-2 text-[#746253] rounded-md mt-5"
+                      >
+                        {user?.businessProfile?.name
+                          ? user.businessProfile.name.charAt(0).toUpperCase() + user.businessProfile.name.slice(1)
+                          : ""}
+                      </button>
                       <div className="flex items-center mt-2">
                         <Image
-                          src="/assets/svgs/icons/star-icon.svg"
+                          src={userCardIcons[user?.customer?.role] ? userCardIcons[user?.customer?.role]
+                            : "/assets/svgs/default-user.svg"
+                          }
                           width={16}
                           height={16}
                           alt="icon"
@@ -363,14 +379,7 @@ export function SearchSiderbar({
                     </div>
                   </div>
                 );
-              } 
-              {/* else {
-                return (
-                  <p className="text-[#746253] p-4 bg-[#F0F0F0] text-xs mt-[5rem]">
-                    There are no results found based on your current search
-                  </p>
-                );
-              } */}
+              }
             })
           ) : (
             <p className="text-[#746253] p-4 bg-[#F0F0F0] text-xs mt-[5rem]">

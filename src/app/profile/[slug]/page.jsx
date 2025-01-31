@@ -27,7 +27,7 @@ function Profile() {
     <ProfileLayout user={user}>
       <div className="relative z-[300]">
         <div className="flex justify-between items-center ">
-          <h3 className="text-xl text-[#746253]">Basic Information</h3>
+          <h3 className="text-xl text-[#746253]">Business Information</h3>
           {slug === currentUser.customerId && 
           <Link
             href={`${slug}/edit`}
@@ -44,7 +44,7 @@ function Profile() {
           </Link>}
         </div>
         <div className="grid grid-cols-6 mt-6">
-          <InfoUnit heading="Phone #" value={user?.customer?.phone || "-"} />
+          <InfoUnit heading="Personal Phone" value={"********"} />
           <InfoUnit heading="Email" value={user?.customer?.email || "-"} />
           <InfoUnit
             heading="Business Name"
@@ -55,7 +55,7 @@ function Profile() {
             value={user?.businessDetails?.address || "-"}
           />
           <InfoUnit
-            heading="Business Phone #"
+            heading="Business Phone"
             value={user?.businessDetails?.businessPhone || "-"}
           />
           <InfoUnit

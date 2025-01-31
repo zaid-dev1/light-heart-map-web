@@ -11,16 +11,20 @@ const notoSerif = Noto_Serif({
 });
 
 export const metadata = {
-  title: "Light Heart",
+  title: "Light Heart Map",
   description: "Collect & analyze your climate & biodiversity data",
+  icons: {
+    icon: "/favicon.svg",
+  },
 };
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
+
       <body className={`${notoSerif.className} text-black`}>
         <Suspense fallback={<Loading />}>
-          <div className="relative z-0   h-screen w-screen overflow-hidden">
+          <div className="relative z-0 h-screen w-screen overflow-hidden">
             <SubLayout />
             <div className="bg-[#f7f9f9] h-full w-full min-h-screen overflow-scroll pb-12">
               {children}

@@ -16,17 +16,25 @@ const notoSerif = Noto_Serif({
 });
 
 export function HomeModal({ fetchUsers, setRolesArray }) {
-  const [isopen, setIsOpen] = useState(true);
+  const [isopen, setIsOpen] = useState(false);
   const [apiLoading, setApiLoading] = useState(false);
   const [form] = Form.useForm();
-
+  const [checkboxColors, setCheckboxColors] = useState(InitialCheckboxText);
   const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
     setIsClient(true);
   }, []);
 
-  const [checkboxColors, setCheckboxColors] = useState(InitialCheckboxText);
+  useEffect(() => {
+    const fromLogin = sessionStorage.getItem('fromLogin');
+    
+    if (fromLogin === 'true') {
+      setIsOpen(true);
+      sessionStorage.removeItem('fromLogin');
+    }
+  }, []);
+
 
   const handleSearch = (values) => {
     try {
@@ -84,8 +92,7 @@ export function HomeModal({ fetchUsers, setRolesArray }) {
         <div className="relative lg:col-span-3 col-span-5 flex flex-col py-10 md:w-[70%] w-[80%] justify-center space-y-4 lg:mt-0">
           <div className="space-y-2">
             <h1 className="font-medium lg:text-3xl md:text-2xl">
-              Find Light Heart Lash Artists, Educators, And Retail Locations
-              Near You
+              I’m Searching For:
             </h1>
           </div>
 
@@ -94,10 +101,10 @@ export function HomeModal({ fetchUsers, setRolesArray }) {
             onFinish={handleSearch}
             initialValues={{
               student: true,
-              lashArtist: false,
-              educator: false,
-              partner: false,
-              lightHQ: false,
+              lashArtist: true,
+              educator: true,
+              partner: true,
+              lightHQ: true,
             }}
             onValuesChange={handleValuesChange}
           >
@@ -160,7 +167,7 @@ export function HomeModal({ fetchUsers, setRolesArray }) {
           <Image
             width={500}
             height={600}
-            src="/assets/images/home-img.png"
+            src="/assets/images/modal.png"
             className="w-full h-full object-cover"
             alt="showcase"
           />

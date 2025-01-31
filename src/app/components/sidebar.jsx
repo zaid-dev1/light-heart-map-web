@@ -66,12 +66,12 @@ export function Sidebar({ open = false, handleDrawer }) {
             <SidebarItem
               icon="/assets/svgs/sidebar/dashboard.svg"
               route="/"
-              name="Home"
+              name="Map"
             />
             {currentUser?.role !== "admin" && <SidebarItem
               icon="/assets/svgs/sidebar/profile.svg"
               route={`/profile/${currentUser?.customerId}`}
-              name="Profile"
+              name="My Profile"
             />}
             {currentUser?.role === "admin" && (
               <SidebarItem
