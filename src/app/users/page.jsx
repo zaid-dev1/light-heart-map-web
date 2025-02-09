@@ -6,7 +6,7 @@ import "antd/dist/reset.css";
 import "tailwindcss/tailwind.css";
 import Loading from "../components/uiComponents/loading";
 import AddEditHqModal from "../components/modals/AddEditHqModal";
-import { getAllCustomers, updateUserRole } from "../api/user";
+import { forgetPassword, getAllCustomers, updateUserRole } from "../api/user";
 import { DeleteFilled, EditFilled } from "@ant-design/icons";
 
 import { getAllLightHQ, deleteLightHQ } from "../api/lightHQ";
@@ -126,6 +126,20 @@ const CustomerTable = () => {
     });
   };
 
+  const handleResetPassword = async (record) => {
+    try {
+      messageApi.warning("Sending...")
+      const res = await forgetPassword({ email : record?.email });
+      if (res?.message) {
+        messageApi.success("Email Sent Successfully.");
+      } else {
+        messageApi.error(error?.response?.data?.message || "Invalid Email");
+      }
+    } catch (error) {
+      messageApi.error(error?.response?.data?.message || "Invalid Email");
+    }
+  }
+
   const customerColumns = [
     {
       title: "Customer Name",
@@ -138,6 +152,16 @@ const CustomerTable = () => {
       title: "Business Name",
       dataIndex: "customerId",
       key: "customerId",
+    },
+    {
+      title: "Reset Password",
+      dataIndex: "customerId",
+      key: "customerId",
+      render: (_, record) => (
+        <Button type="primary" onClick={() => handleResetPassword(record)}>
+          Reset Password
+        </Button>
+      ),
     },
     {
       title: "Email",

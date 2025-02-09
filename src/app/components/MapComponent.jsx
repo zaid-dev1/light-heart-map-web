@@ -185,12 +185,12 @@ const MapComponent = ({ location, users, sortValue }) => {
                               {user?.businessProfile?.address}
                             </span>
                           </p>
-                          <button
+                          {localStorage.getItem("currentUser") !== null && <button
                             onClick={() => handleProfileRouting(user)}
                             className="bg-[#EDE6DE3D] border border-[#E8E8E8] w-full py-3 text-[#746253] rounded-md mt-5"
                           >
                             More Details
-                          </button>
+                          </button>}
                         </div>
                       </InfoWindow>
                     )}

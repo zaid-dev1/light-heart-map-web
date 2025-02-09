@@ -34,7 +34,7 @@ export function SearchSiderbar({
   const [address, setAddress] = useState("");
   const [open, setOpen] = useState(false);
   const [checkedItems, setCheckedItems] = useState({});
-
+  const AuthorizedUser = localStorage.getItem("currentUser") !== null
   const router = useRouter();
   const GOOGLE_MAP_KEY = process.env.NEXT_PUBLIC_GOOGLE_MAP_KEY;
   const isLoaded = useGoogleMapsApi(GOOGLE_MAP_KEY);
@@ -140,10 +140,12 @@ export function SearchSiderbar({
   };
 
   const handleRouting = (user) => {
+    if (!AuthorizedUser) return
     router.push(`/profile/${user.customer.customerId}`);
   };
 
   const handleProfileRouting = (user, hq) => {
+    if (!AuthorizedUser) return
     if (hq) {
       router.push(`/profile/${user.id}`);
     } else {
@@ -176,7 +178,6 @@ export function SearchSiderbar({
       </div>
     </div>
   );
-
   return (
     <div
       className={`fixed top-[5rem] h-[88vh] py-2 mb-10 z-[300] bg-white rounded-xl ${!isOpen ? "left-[-20px]" : "left-[15px]"}`}
@@ -360,14 +361,15 @@ export function SearchSiderbar({
                           </p>
                         </div>
                       )}
-                      <div className="flex items-center mt-2">
+                      {AuthorizedUser &&
+                        <div className="flex items-center mt-2">
                         <Image
                           src="/assets/svgs/icons/view-profile.svg"
                           width={16}
                           height={16}
                           alt="icon"
                         />
-                        <button
+                          <button
                           className="ml-3 text-[#5B5B5B] text-sm"
                           onClick={() => {
                             handleRouting(user);
@@ -375,7 +377,7 @@ export function SearchSiderbar({
                         >
                           Visit Profile
                         </button>
-                      </div>
+                      </div>}
                     </div>
                   </div>
                 );

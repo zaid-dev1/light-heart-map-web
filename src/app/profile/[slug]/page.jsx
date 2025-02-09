@@ -28,7 +28,7 @@ function Profile() {
       <div className="relative z-[300]">
         <div className="flex justify-between items-center ">
           <h3 className="text-xl text-[#746253]">Business Information</h3>
-          {slug === currentUser.customerId && 
+          {(slug === currentUser.customerId || currentUser.role === 'admin') &&
           <Link
             href={`${slug}/edit`}
             className="text-[#746253] flex items-center bg-primary rounded-full px-3 py-2"

@@ -8,6 +8,7 @@ import { Drawer } from "antd";
 
 export function Sidebar({ open = false, handleDrawer }) {
   const [currentUser, setCurrentUser] = React.useState(null);
+  const AuthorizedUser = localStorage.getItem("currentUser") !== null
   let pathname = usePathname();
   const router = useRouter();
 
@@ -68,12 +69,12 @@ export function Sidebar({ open = false, handleDrawer }) {
               route="/"
               name="Map"
             />
-            {currentUser?.role !== "admin" && <SidebarItem
+            {currentUser?.role !== "admin" && AuthorizedUser &&  <SidebarItem
               icon="/assets/svgs/sidebar/profile.svg"
               route={`/profile/${currentUser?.customerId}`}
               name="My Profile"
             />}
-            {currentUser?.role === "admin" && (
+            {currentUser?.role === "admin" && AuthorizedUser &&  (
               <SidebarItem
                 icon="/assets/svgs/icons/profile-icon.svg"
                 route={`/users`}
@@ -81,8 +82,23 @@ export function Sidebar({ open = false, handleDrawer }) {
               />
             )}
           </div>
+          <div className="p-4 max-w-sm">
+            <h1 className="font-semibold text-2xl text-[#746253] mb-2">
+              Need Help?
+            </h1>
+            <p className="text-gray-700 text-xs">Email us at:</p>
+            <a
+              href="mailto:help@lightheartlash.com"
+              className="text-md text-gray-700 hover:text-[#746253]"
+            >
+              help@lightheartlash.com
+            </a>
+          </div>
+
+
         </div>
-        <div className="flex justify-center py-2 px-4 border-t-2">
+        { AuthorizedUser && 
+          <div className="flex justify-center py-2 px-4 border-t-2">
           <button
             onClick={handleLogout}
             className="flex items-center text-customgray-1 hover:text-customgray-1 whitespace-nowrap py-3 px-8 mb-3 cursor-pointer text-base rounded-full  bg-primary text-[#746253] opacity-[45%] hover:bg-primary hover:opacity-75"
@@ -93,7 +109,7 @@ export function Sidebar({ open = false, handleDrawer }) {
             />
             <p className="">Logout</p>
           </button>
-        </div>
+        </div>}
       </div>
     </Drawer>
   );
