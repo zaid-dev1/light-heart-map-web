@@ -4,9 +4,16 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { isAuthPaths } from "../../../utils/constants";
+import { useRouter } from "next/navigation";
 
 export function Header({ handleDrawer }) {
+  const [authorizedUser, setAuthorizedUser] = React.useState(null);
   const pathname = usePathname();
+  const router = useRouter()
+
+  React.useEffect(() => {
+    setAuthorizedUser(JSON.parse(localStorage.getItem("currentUser")) !== null)
+  }, [pathname]);
 
   const showDrawer = () => {
     handleDrawer((prev) => !prev);
@@ -34,7 +41,9 @@ export function Header({ handleDrawer }) {
           alt="Lash Atrist"
         />
       </Link>
-      <span></span>
+      {(authorizedUser || pathname === "/forget-password" || pathname === "/login" || pathname === "/reset-password") ? <span></span> :
+      <button className="text-[#746253]" onClick={() => router.push("/login")}>Sign in</button>
+      }
     </div>
   );
 }

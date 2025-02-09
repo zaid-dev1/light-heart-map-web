@@ -8,7 +8,7 @@ import { Drawer } from "antd";
 
 export function Sidebar({ open = false, handleDrawer }) {
   const [currentUser, setCurrentUser] = React.useState(null);
-  const AuthorizedUser = localStorage.getItem("currentUser") !== null
+  const [authorizedUser, setAuthorizedUser] = React.useState(null);
   let pathname = usePathname();
   const router = useRouter();
 
@@ -17,6 +17,7 @@ export function Sidebar({ open = false, handleDrawer }) {
   React.useEffect(() => {
     const user = JSON.parse(localStorage.getItem("currentUser"));
     setCurrentUser(user);
+    setAuthorizedUser(JSON.parse(localStorage.getItem("currentUser")) !== null)
   }, [pathname]);
 
   const isAuthPage = noLayoutNeeded.includes(pathname);
@@ -69,12 +70,12 @@ export function Sidebar({ open = false, handleDrawer }) {
               route="/"
               name="Map"
             />
-            {currentUser?.role !== "admin" && AuthorizedUser &&  <SidebarItem
+            {currentUser?.role !== "admin" && authorizedUser &&  <SidebarItem
               icon="/assets/svgs/sidebar/profile.svg"
               route={`/profile/${currentUser?.customerId}`}
               name="My Profile"
             />}
-            {currentUser?.role === "admin" && AuthorizedUser &&  (
+            {currentUser?.role === "admin" && authorizedUser &&  (
               <SidebarItem
                 icon="/assets/svgs/icons/profile-icon.svg"
                 route={`/users`}
@@ -97,7 +98,7 @@ export function Sidebar({ open = false, handleDrawer }) {
 
 
         </div>
-        { AuthorizedUser && 
+        { authorizedUser && 
           <div className="flex justify-center py-2 px-4 border-t-2">
           <button
             onClick={handleLogout}
