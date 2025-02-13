@@ -96,6 +96,7 @@ const MapComponent = ({ location, users, sortValue }) => {
             lng: location?.length && location[1],
           }}
           zoom={zoomLevel}
+          gestureHandling="greedy"
           onClick={handleMapClick}
         >
           {users?.map((user, index) => {

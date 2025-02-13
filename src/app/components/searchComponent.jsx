@@ -180,7 +180,7 @@ export function SearchSiderbar({
   );
   return (
     <div
-      className={`fixed top-[5rem] h-[88vh] py-2 mb-10 z-[300] bg-white rounded-xl ${!isOpen ? "left-[-20px]" : "left-[15px]"}`}
+      className={`fixed top-[5rem] h-[88vh] py-2 mb-10 z-[300] ${isOpen && "bg-white"} rounded-xl ${!isOpen ? "left-[-20px]" : "left-[15px]"}`}
     >
       {isOpen ? (
         <button
