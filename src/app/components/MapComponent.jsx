@@ -127,12 +127,12 @@ const MapComponent = ({ location, users, sortValue }) => {
                       >
                         <div className={`w-[15rem] p-3 ${notoSerif.className}`}>
                           <div className="flex items-center">
-                            <Image
+                            {user?.customer?.role && <Image
                               src={userCardIcons[user?.customer?.role]}
                               width={40}
                               height={40}
                               alt={userCardIcons[user?.customer?.role]}
-                            />
+                            />}
                             <h3 className="text-[#4B4B4B] text-xl ml-3 font-bold capitalize">
                               {user?.customer?.firstName}{" "}
                               {user?.customer?.lastName}
