@@ -112,7 +112,7 @@ const MapComponent = ({ location, users, sortValue }) => {
                     lng: +user?.businessProfile.longitude,
                   }}
                   icon={{
-                    url: userTypeIcons[user?.customer?.role],
+                    url: userTypeIcons[user?.customer?.role] || userTypeIcons['lashArtist'],
                     scaledSize: new window.google.maps.Size(40, 60),
                   }}
                   onClick={() => handleIconClick("user", index)}

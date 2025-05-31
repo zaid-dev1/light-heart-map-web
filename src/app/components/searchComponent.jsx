@@ -295,11 +295,12 @@ export function SearchSiderbar({
                   >
                     <Image
                       src={userCardIcons[user?.customer?.role] ? userCardIcons[user?.customer?.role]
-                        : "/assets/svgs/default-user.svg"
+                        : userCardIcons['lashArtist']
                       }
                       width={80}
                       height={80}
                       alt="img"
+                      className="w-[80px] h-[80px] sm:w-[60px] sm:h-[60px] flex-shrink-0"
                     />
                     <div className="ml-6">
 
@@ -314,14 +315,14 @@ export function SearchSiderbar({
                       <div className="flex items-center mt-2">
                         <Image
                           src={userCardIcons[user?.customer?.role] ? userCardIcons[user?.customer?.role]
-                            : "/assets/svgs/default-user.svg"
+                            : userCardIcons['lashArtist']
                           }
                           width={16}
                           height={16}
                           alt="icon"
                         />
                         <p className="ml-3 text-[#5B5B5B] text-sm capitalize">
-                          {user?.customer?.role}
+                          {user?.customer?.role || 'lashArtist'} 
                         </p>
                       </div>
                       <div className="flex items-center mt-2">
