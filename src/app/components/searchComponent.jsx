@@ -213,7 +213,7 @@ export function SearchSiderbar({
       )}
 
       <div
-        className={`h-full w-full mt-2 overflow-scroll py-6 px-4  ${!isOpen ? "hidden" : "w-[320px]"}`}
+        className={`h-full w-full mt-2 overflow-scroll py-6 px-4  ${!isOpen ? "hidden" : "w-[340px] max-w-full"}`}
       >
         <AutoComplete
           value={address}
@@ -297,8 +297,8 @@ export function SearchSiderbar({
                       src={userCardIcons[user?.customer?.role] ? userCardIcons[user?.customer?.role]
                         : "/assets/svgs/default-user.svg"
                       }
-                      width={100}
-                      height={100}
+                      width={80}
+                      height={80}
                       alt="img"
                     />
                     <div className="ml-6">
@@ -331,7 +331,7 @@ export function SearchSiderbar({
                           height={16}
                           alt="icon"
                         />
-                        <p className="ml-3 text-[#5B5B5B] text-sm">
+                          <p className="ml-3 w-full text-[#5B5B5B] break-all whitespace-normal text-sm">
                           {(user?.businessProfile?.address).slice(0, 30)}.
                         </p>
                       </div>
@@ -343,7 +343,7 @@ export function SearchSiderbar({
                             height={16}
                             alt="icon"
                           />
-                          <p className="ml-3 text-[#5B5B5B] text-sm">
+                          <p className="ml-3 w-full text-[#5B5B5B] break-all whitespace-normal text-sm">
                             {user?.businessProfile?.instagramAccount}
                           </p>
                         </div>
@@ -356,7 +356,7 @@ export function SearchSiderbar({
                             height={16}
                             alt="icon"
                           />
-                          <p className="ml-3 text-[#5B5B5B] text-sm  cursor-pointer">
+                          <p className="ml-3 w-full text-[#5B5B5B] break-all whitespace-normal text-sm">
                             {user?.businessProfile?.websiteLink}
                           </p>
                         </div>

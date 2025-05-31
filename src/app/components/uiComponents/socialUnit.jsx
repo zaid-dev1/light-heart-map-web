@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export default function SocialUnit({ icon, value }) {
   return (
-    <div className="md:col-span-2 col-span-5 my-4 flex items-center">
+    <div className="col-span-5 my-4 flex items-center">
       <div className="p-2 rounded-full bg-primary opacity-50">
         <Image
           className="z-[300]"
@@ -12,7 +12,7 @@ export default function SocialUnit({ icon, value }) {
           alt="social"
         />
       </div>
-      <h3 className=" ml-3 mr-8 text-medium text-xl">{value}</h3>
+      <h3 className=" ml-3 mr-8 text-medium text-xl break-all whitespace-normal">{value}</h3>
     </div>
   );
 }
