@@ -213,7 +213,7 @@ export function SearchSiderbar({
       )}
 
       <div
-        className={`h-full w-full mt-2 overflow-scroll py-6 px-4  ${!isOpen ? "hidden" : "w-[340px] max-w-full"}`}
+        className={`h-full mt-2 overflow-scroll py-6 px-4  ${!isOpen ? "hidden" : "w-[340px] max-w-full"}`}
       >
         <AutoComplete
           value={address}
@@ -332,7 +332,7 @@ export function SearchSiderbar({
                           alt="icon"
                         />
                           <p className="ml-3 w-full text-[#5B5B5B] break-all whitespace-normal text-sm">
-                          {(user?.businessProfile?.address).slice(0, 30)}.
+                          {user?.businessProfile?.address || ''}
                         </p>
                       </div>
                       {user?.businessProfile?.instagramAccount && (
